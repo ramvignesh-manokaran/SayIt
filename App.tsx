@@ -1,16 +1,26 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Text, View } from "react-native";
-import { CameraOverlay } from "./src/components/CameraOverlay";
-import { styles } from "./src/styles/app";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { HomeScreen } from "./src/screens/home";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+const Stack = createStackNavigator();
 
 const SayItApp = () => {
   return (
-    <View style={styles.container}>
-      <Text>Hello SayIt</Text>
-      <StatusBar style="auto" />
-      <CameraOverlay></CameraOverlay>
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+            cardStyle: { backgroundColor: "white" },
+          }}
+        >
+          <Stack.Screen name="Home" component={HomeScreen}></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 
