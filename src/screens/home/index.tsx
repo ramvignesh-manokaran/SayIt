@@ -4,22 +4,25 @@ import { View, Text, TextInput } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RootStackParamList } from "../../../App";
+import AudioPlayer from "../../components/AudioPlayer";
+import AudioRecorder from "../../components/AudioRecorder";
 import { CameraOverlay } from "../../components/CameraOverlay";
 import { styles } from "../../styles/app";
 
 export const HomeScreen = ({
-  navigation,
+  navigation
 }: {
   navigation: StackNavigationProp<RootStackParamList, "Home">;
 }) => {
   const wordList = ["Apple", "Book", "Water"];
   const [query, setQuery] = useState<string>("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [recordedURI, setRecordedURI] = useState<string | null>();
 
   useEffect(() => {
     if (query) {
       setSuggestions(
-        wordList.filter((word) =>
+        wordList.filter(word =>
           word.toLowerCase().includes(query.toLowerCase())
         )
       );
@@ -39,7 +42,7 @@ export const HomeScreen = ({
           borderTopColor: "#ddd",
           borderTopWidth: 1,
           backgroundColor: "#eee",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
         <Text>{item}</Text>
@@ -51,7 +54,7 @@ export const HomeScreen = ({
     <SafeAreaView
       style={{
         flex: 1,
-        flexGrow: 1,
+        flexGrow: 1
       }}
     >
       <View style={styles.container}>
@@ -65,7 +68,7 @@ export const HomeScreen = ({
               height: 36,
               width: "100%",
               borderRadius: 18,
-              zIndex: 10,
+              zIndex: 10
             }}
             onChangeText={setQuery}
             value={query}
@@ -78,7 +81,7 @@ export const HomeScreen = ({
                 width: "100%",
                 paddingTop: 36,
                 backgroundColor: "#eee",
-                borderRadius: 18,
+                borderRadius: 18
               }}
               contentContainerStyle={{ overflow: "hidden" }}
               data={suggestions}
@@ -88,6 +91,10 @@ export const HomeScreen = ({
           )}
         </View>
         <CameraOverlay></CameraOverlay>
+        <AudioRecorder
+          onStopRecording={recordedURI => setRecordedURI(recordedURI)}
+        />
+        {recordedURI && <AudioPlayer recordedURI={recordedURI} />}
       </View>
     </SafeAreaView>
   );

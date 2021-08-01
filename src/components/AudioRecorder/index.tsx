@@ -1,25 +1,41 @@
-import React, { useState } from "react";
-import { Button, View, StyleSheet, Platform, Text } from "react-native";
+import React, { FC, useState } from "react";
+import {
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  Image,
+  Vibration,
+  StyleSheet
+} from "react-native";
 import { Audio } from "expo-av";
-import * as FileSystem from "expo-file-system";
-import axios from "axios";
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 50,
     flex: 1,
-    justifyContent: "center",
-    backgroundColor: "#ecf0f1",
-    padding: 8
+    alignItems: "center",
+    justifyContent: "flex-start"
+  },
+  recordingText: {
+    paddingBottom: 50
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50
   }
 });
+interface AudioRecorderProps {
+  onStopRecording: (recordedURI: string | null) => void;
+}
 
-const AudioRecorder = () => {
+const AudioRecorder: FC<AudioRecorderProps> = ({ onStopRecording }) => {
   const [recording, setRecording] = useState<Audio.Recording>();
-  const [recordedURI, setRecordedURI] = useState<string | null>();
-  const [speechText, setSpeechText] = useState<any>();
+  const [isRecording, setIsRecording] = useState(false);
 
   const startRecording = async () => {
     try {
+      setIsRecording(true);
+      Vibration.vibrate(100);
       console.log("Requesting permissions..");
       await Audio.requestPermissionsAsync();
       await Audio.setAudioModeAsync({
@@ -33,6 +49,7 @@ const AudioRecorder = () => {
       setRecording(recording);
       console.log("Recording started");
     } catch (err) {
+      setIsRecording(false);
       console.error("Failed to start recording", err);
     }
   };
@@ -43,81 +60,89 @@ const AudioRecorder = () => {
     if (recording) {
       await recording.stopAndUnloadAsync();
       const uri = recording.getURI();
-      setRecordedURI(uri);
+      onStopRecording(uri);
       console.log("Recording stopped and stored at", uri);
     }
-  };
-
-  const playSound = async () => {
-    if (recordedURI) {
-      const playbackInstance = new Audio.Sound();
-      const source = {
-        uri: recordedURI
-      };
-      await playbackInstance.loadAsync(source);
-      playbackInstance.playAsync();
-    }
-  };
-
-  const submitAudio = async () => {
-    if (recordedURI) {
-      try {
-        const { uri } = await FileSystem.getInfoAsync(recordedURI);
-
-        const formData = new FormData();
-        formData.append(
-          "file",
-          uri,
-          Platform.OS === "ios" ? `${Date.now()}.wav` : `${Date.now()}.m4a`
-        );
-
-        const requestOptions = {
-          method: "POST",
-          headers: { "Content-Type": "multipart/form-data" },
-          body: formData
-        };
-
-        fetch("https://localhost:3005")
-          .then(response => response.text())
-          .then(text => setSpeechText(text))
-          .catch(function(error) {
-            console.log(
-              "There has been a problem with your fetch operation: " +
-                error.message
-            );
-            throw error;
-          });
-
-        // fetch("https://jsonplaceholder.typicode.com/posts", {
-        //   method: "POST",
-        //   body: JSON.stringify({
-        //     title: "foo",
-        //     body: "bar",
-        //     userId: 1
-        //   }),
-        //   headers: {
-        //     "Content-type": "application/json; charset=UTF-8"
-        //   }
-        // })
-        //   .then(response => response.text())
-        //   .then(text => setSpeechText(text));
-      } catch (error) {
-        console.log("There was an error reading file", error);
-      }
-    }
+    setIsRecording(false);
   };
 
   return (
     <View style={styles.container}>
-      <Button
-        title={recording ? "Stop Recording" : "Start Recording"}
-        onPress={recording ? stopRecording : startRecording}
-      />
-      <Button title="Play Sound" onPress={playSound} />
-      <Button title="Submit Audio" onPress={submitAudio} />
-      <Text>{speechText}</Text>
+      {isRecording && (
+        <Text style={styles.recordingText}>Recording in Progress...</Text>
+      )}
+      {!isRecording && (
+        <Text style={styles.recordingText}>
+          Press and hold below icon to record
+        </Text>
+      )}
+      <TouchableWithoutFeedback
+        onPressIn={startRecording}
+        onPressOut={stopRecording}
+      >
+        <Image
+          style={styles.tinyLogo}
+          source={require("../../assets/images/microphone.png")}
+        />
+      </TouchableWithoutFeedback>
     </View>
   );
 };
 
 export default AudioRecorder;
+
+// spiking
+
+//const [speechText, setSpeechText] = useState<any>();
+
+// const submitAudio = async () => {
+//   if (recordedURI) {
+//     try {
+//       const { uri } = await FileSystem.getInfoAsync(recordedURI);
+
+//       const formData = new FormData();
+//       formData.append(
+//         "file",
+//         uri,
+//         Platform.OS === "ios" ? `${Date.now()}.wav` : `${Date.now()}.m4a`
+//       );
+
+//       const requestOptions = {
+//         method: "POST",
+//         headers: { "Content-Type": "multipart/form-data" },
+//         body: formData
+//       };
+
+//       fetch("https://localhost:3005")
+//         .then(response => response.text())
+//         .then(text => setSpeechText(text))
+//         .catch(function(error) {
+//           console.log(
+//             "There has been a problem with your fetch operation: " +
+//               error.message
+//           );
+//           throw error;
+//         });
+
+//       // fetch("https://jsonplaceholder.typicode.com/posts", {
+//       //   method: "POST",
+//       //   body: JSON.stringify({
+//       //     title: "foo",
+//       //     body: "bar",
+//       //     userId: 1
+//       //   }),
+//       //   headers: {
+//       //     "Content-type": "application/json; charset=UTF-8"
+//       //   }
+//       // })
+//       //   .then(response => response.text())
+//       //   .then(text => setSpeechText(text));
+//     } catch (error) {
+//       console.log("There was an error reading file", error);
+//     }
+//   }
+// };
+
+/* 
+<Button title="Submit Audio" onPress={submitAudio} />
+      <Text>{speechText}</Text> */
