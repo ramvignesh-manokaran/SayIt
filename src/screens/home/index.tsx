@@ -33,9 +33,9 @@ export const HomeScreen = ({
       <TouchableOpacity
         onPress={() => navigation.navigate("Word", { word: item })}
         style={{
-          height: 36,
+          height: 50,
           width: "100%",
-          paddingHorizontal: 18,
+          paddingHorizontal: 25,
           borderTopColor: "#ddd",
           borderTopWidth: 1,
           backgroundColor: "#eee",
@@ -58,13 +58,14 @@ export const HomeScreen = ({
         <Text>Hello SayIt Flex</Text>
         <View style={{ width: "100%", zIndex: 10 }}>
           <TextInput
+            placeholder={"Search word (e.g. Book)"}
             style={{
-              paddingHorizontal: 18,
+              paddingHorizontal: 25,
               flexDirection: "row",
               backgroundColor: "#eee",
-              height: 36,
+              height: 50,
               width: "100%",
-              borderRadius: 18,
+              borderRadius: 25,
               zIndex: 10,
             }}
             onChangeText={setQuery}
@@ -76,9 +77,9 @@ export const HomeScreen = ({
                 zIndex: 7,
                 position: "absolute",
                 width: "100%",
-                paddingTop: 36,
+                paddingTop: 50,
                 backgroundColor: "#eee",
-                borderRadius: 18,
+                borderRadius: 25,
               }}
               contentContainerStyle={{ overflow: "hidden" }}
               data={suggestions}
