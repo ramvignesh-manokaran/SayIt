@@ -11,7 +11,7 @@ import Drawer from "../../components/BottomDrawer";
 import { styles } from "../../styles/app";
 
 export const HomeScreen = ({
-  navigation
+  navigation,
 }: {
   navigation: StackNavigationProp<RootStackParamList, "Home">;
 }) => {
@@ -24,7 +24,7 @@ export const HomeScreen = ({
   useEffect(() => {
     if (query) {
       setSuggestions(
-        wordList.filter(word =>
+        wordList.filter((word) =>
           word.toLowerCase().includes(query.toLowerCase())
         )
       );
@@ -38,13 +38,13 @@ export const HomeScreen = ({
       <TouchableOpacity
         onPress={() => navigation.navigate("Word", { word: item })}
         style={{
-          height: 36,
+          height: 50,
           width: "100%",
-          paddingHorizontal: 18,
+          paddingHorizontal: 25,
           borderTopColor: "#ddd",
           borderTopWidth: 1,
           backgroundColor: "#eee",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
         <Text>{item}</Text>
@@ -56,21 +56,22 @@ export const HomeScreen = ({
     <SafeAreaView
       style={{
         flex: 1,
-        flexGrow: 1
+        flexGrow: 1,
       }}
     >
       <View style={styles.container}>
         <Text>Hello SayIt Flex</Text>
         <View style={{ width: "100%", zIndex: 10 }}>
           <TextInput
+            placeholder={"Search word (e.g. Book)"}
             style={{
-              paddingHorizontal: 18,
+              paddingHorizontal: 25,
               flexDirection: "row",
               backgroundColor: "#eee",
-              height: 36,
+              height: 50,
               width: "100%",
-              borderRadius: 18,
-              zIndex: 10
+              borderRadius: 25,
+              zIndex: 10,
             }}
             onChangeText={setQuery}
             value={query}
@@ -81,9 +82,9 @@ export const HomeScreen = ({
                 zIndex: 7,
                 position: "absolute",
                 width: "100%",
-                paddingTop: 36,
+                paddingTop: 50,
                 backgroundColor: "#eee",
-                borderRadius: 18
+                borderRadius: 25,
               }}
               contentContainerStyle={{ overflow: "hidden" }}
               data={suggestions}
@@ -94,7 +95,7 @@ export const HomeScreen = ({
         </View>
         <CameraOverlay></CameraOverlay>
         <AudioRecorder
-          onStopRecording={recordedURI => setRecordedURI(recordedURI)}
+          onStopRecording={(recordedURI) => setRecordedURI(recordedURI)}
         />
         {recordedURI && <AudioPlayer recordedURI={recordedURI} />}
         <Drawer />
