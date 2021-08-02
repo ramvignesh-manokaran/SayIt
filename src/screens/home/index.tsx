@@ -7,11 +7,10 @@ import { RootStackParamList } from "../../../App";
 import AudioPlayer from "../../components/AudioPlayer";
 import AudioRecorder from "../../components/AudioRecorder";
 import { CameraOverlay } from "../../components/CameraOverlay";
-import Drawer from "../../components/BottomDrawer";
 import { styles } from "../../styles/app";
 
 export const HomeScreen = ({
-  navigation,
+  navigation
 }: {
   navigation: StackNavigationProp<RootStackParamList, "Home">;
 }) => {
@@ -24,7 +23,7 @@ export const HomeScreen = ({
   useEffect(() => {
     if (query) {
       setSuggestions(
-        wordList.filter((word) =>
+        wordList.filter(word =>
           word.toLowerCase().includes(query.toLowerCase())
         )
       );
@@ -44,7 +43,7 @@ export const HomeScreen = ({
           borderTopColor: "#ddd",
           borderTopWidth: 1,
           backgroundColor: "#eee",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
         <Text>{item}</Text>
@@ -56,7 +55,7 @@ export const HomeScreen = ({
     <SafeAreaView
       style={{
         flex: 1,
-        flexGrow: 1,
+        flexGrow: 1
       }}
     >
       <View style={styles.container}>
@@ -71,7 +70,7 @@ export const HomeScreen = ({
               height: 50,
               width: "100%",
               borderRadius: 25,
-              zIndex: 10,
+              zIndex: 10
             }}
             onChangeText={setQuery}
             value={query}
@@ -84,7 +83,7 @@ export const HomeScreen = ({
                 width: "100%",
                 paddingTop: 50,
                 backgroundColor: "#eee",
-                borderRadius: 25,
+                borderRadius: 25
               }}
               contentContainerStyle={{ overflow: "hidden" }}
               data={suggestions}
@@ -95,10 +94,9 @@ export const HomeScreen = ({
         </View>
         <CameraOverlay></CameraOverlay>
         <AudioRecorder
-          onStopRecording={(recordedURI) => setRecordedURI(recordedURI)}
+          onStopRecording={recordedURI => setRecordedURI(recordedURI)}
         />
         {recordedURI && <AudioPlayer recordedURI={recordedURI} />}
-        <Drawer />
       </View>
     </SafeAreaView>
   );
