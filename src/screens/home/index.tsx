@@ -1,12 +1,13 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useEffect, useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Pressable } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RootStackParamList } from "../../../App";
 import AudioPlayer from "../../components/AudioPlayer";
 import AudioRecorder from "../../components/AudioRecorder";
 import { CameraOverlay } from "../../components/CameraOverlay";
+import Drawer from "../../components/BottomDrawer";
 import { styles } from "../../styles/app";
 
 export const HomeScreen = ({
@@ -18,6 +19,7 @@ export const HomeScreen = ({
   const [query, setQuery] = useState<string>("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [recordedURI, setRecordedURI] = useState<string | null>();
+  const [showDrawer, setShowDrawer] = useState(false);
 
   useEffect(() => {
     if (query) {
@@ -95,6 +97,7 @@ export const HomeScreen = ({
           onStopRecording={recordedURI => setRecordedURI(recordedURI)}
         />
         {recordedURI && <AudioPlayer recordedURI={recordedURI} />}
+        <Drawer />
       </View>
     </SafeAreaView>
   );
