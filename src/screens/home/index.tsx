@@ -4,9 +4,6 @@ import { View, Text, TextInput, Pressable } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RootStackParamList } from "../../../App";
-import AudioPlayer from "../../components/AudioPlayer";
-import AudioRecorder from "../../components/AudioRecorder";
-import { CameraOverlay } from "../../components/CameraOverlay";
 import { styles } from "../../styles/app";
 
 export const HomeScreen = ({
@@ -18,7 +15,6 @@ export const HomeScreen = ({
   const [query, setQuery] = useState<string>("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [recordedURI, setRecordedURI] = useState<string | null>();
-  const [showDrawer, setShowDrawer] = useState(false);
 
   useEffect(() => {
     if (query) {
@@ -92,11 +88,6 @@ export const HomeScreen = ({
             ></FlatList>
           )}
         </View>
-        <CameraOverlay></CameraOverlay>
-        <AudioRecorder
-          onStopRecording={recordedURI => setRecordedURI(recordedURI)}
-        />
-        {recordedURI && <AudioPlayer recordedURI={recordedURI} />}
       </View>
     </SafeAreaView>
   );
