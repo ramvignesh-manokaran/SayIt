@@ -64,10 +64,21 @@ const AudioRecorder: FC<AudioRecorderProps> = ({ onStopRecording }) => {
         onPressIn={startRecording}
         onPressOut={stopRecording}
       >
-        <View style={styles.iconContainer}>
+        <View
+          style={[
+            styles.iconContainer,
+            isRecording
+              ? styles.iconWhileRecording
+              : styles.iconWhileNotRecording
+          ]}
+        >
           <Image
             style={styles.micLogo}
-            source={require("../../assets/images/microphone.png")}
+            source={
+              isRecording
+                ? require("../../assets/images/microphone-green.png")
+                : require("../../assets/images/microphone-white.png")
+            }
           />
         </View>
       </TouchableWithoutFeedback>
@@ -91,10 +102,15 @@ const styles = StyleSheet.create({
   iconContainer: {
     height: 150,
     width: 150,
-    backgroundColor: Colors.GREEN,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 75
+  },
+  iconWhileNotRecording: {
+    backgroundColor: Colors.GREEN
+  },
+  iconWhileRecording: {
+    backgroundColor: Colors.LIGHT_GRAY
   },
   micLogo: {
     width: 30,

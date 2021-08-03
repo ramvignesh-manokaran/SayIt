@@ -3,3 +3,4 @@ export const ORANGE = "#FFE6BD";
 export const GRAY = "#666666";
 export const WHITE = "#FFFFFF";
 export const BLACK = "#000000";
+export const LIGHT_GRAY = "#E8E8E8";
