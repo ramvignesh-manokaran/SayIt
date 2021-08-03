@@ -8,22 +8,8 @@ import {
   StyleSheet
 } from "react-native";
 import { Audio } from "expo-av";
+import { Colors, Typography } from "../../styles";
 
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 50,
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-start"
-  },
-  recordingText: {
-    paddingBottom: 50
-  },
-  tinyLogo: {
-    width: 50,
-    height: 50
-  }
-});
 interface AudioRecorderProps {
   onStopRecording: (recordedURI: string | null) => void;
 }
@@ -72,24 +58,49 @@ const AudioRecorder: FC<AudioRecorderProps> = ({ onStopRecording }) => {
         <Text style={styles.recordingText}>Recording in Progress...</Text>
       )}
       {!isRecording && (
-        <Text style={styles.recordingText}>
-          Press and hold below icon to record
-        </Text>
+        <Text style={styles.recordingText}>Press and hold while recording</Text>
       )}
       <TouchableWithoutFeedback
         onPressIn={startRecording}
         onPressOut={stopRecording}
       >
-        <Image
-          style={styles.tinyLogo}
-          source={require("../../assets/images/microphone.png")}
-        />
+        <View style={styles.iconContainer}>
+          <Image
+            style={styles.micLogo}
+            source={require("../../assets/images/microphone.png")}
+          />
+        </View>
       </TouchableWithoutFeedback>
     </View>
   );
 };
 
 export default AudioRecorder;
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 30,
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start"
+  },
+  recordingText: {
+    ...Typography.normal,
+    paddingBottom: 20
+  },
+  iconContainer: {
+    height: 150,
+    width: 150,
+    backgroundColor: Colors.GREEN,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 75
+  },
+  micLogo: {
+    width: 30,
+    height: 45
+  }
+});
 
 // spiking
 

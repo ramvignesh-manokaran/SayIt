@@ -5,29 +5,27 @@ import { Typography, Colors } from "../../styles";
 import Button, { ButtonProps, ButtonType } from "../Button";
 
 interface BottomDrawerProps {
+  showDrawer: boolean;
   header: string;
   description: string;
+  onClose: () => void;
   primaryButton: Pick<ButtonProps, "text" | "onPress">;
   secondaryButton?: Pick<ButtonProps, "text" | "onPress">;
 }
 
 const BottomDrawer: FC<BottomDrawerProps> = ({
+  showDrawer,
   header,
   description,
+  onClose,
   primaryButton,
   secondaryButton
 }) => {
-  const [visible, setVisible] = useState(false);
-
-  const toggleBottomNavigationView = () => {
-    setVisible(!visible);
-  };
-
   return (
     <BottomSheet
-      visible={visible}
-      onBackButtonPress={toggleBottomNavigationView}
-      onBackdropPress={toggleBottomNavigationView}
+      visible={showDrawer}
+      onBackButtonPress={onClose}
+      onBackdropPress={onClose}
     >
       <View style={styles.bottomNavigationView}>
         <View style={styles.innerView}>
@@ -65,8 +63,7 @@ const styles = StyleSheet.create({
     paddingTop: 44,
     paddingBottom: 24,
     paddingRight: 24,
-    paddingLeft: 24,
-    boxShadow: "0px 2px 20px rgba(0, 0, 0, 0.25)"
+    paddingLeft: 24
   },
   innerView: {
     flex: 1,

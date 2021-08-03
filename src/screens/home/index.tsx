@@ -14,7 +14,6 @@ export const HomeScreen = ({
   const wordList = ["Apple", "Book", "Water"];
   const [query, setQuery] = useState<string>("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [recordedURI, setRecordedURI] = useState<string | null>();
 
   useEffect(() => {
     if (query) {
@@ -31,7 +30,7 @@ export const HomeScreen = ({
   const renderSuggestion = ({ item }: { item: string }) => {
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate("Word", { word: item })}
+        onPress={() => navigation.navigate("Test", { word: item })}
         style={{
           height: 50,
           width: "100%",
