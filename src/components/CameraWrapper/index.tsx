@@ -1,9 +1,10 @@
 import { Camera } from "expo-camera";
 import React, { FC, useEffect, useState } from "react";
-import { Text, TouchableOpacity, View, StyleSheet, Image } from "react-native";
+import { Text, StyleSheet } from "react-native";
+import CancelButton from "../CancelButton";
 
 interface CameraProps {
-  onCancel: () => void;
+  onCancel?: () => void;
 }
 
 const CameraWrapper: FC<CameraProps> = ({ onCancel }) => {
@@ -25,14 +26,7 @@ const CameraWrapper: FC<CameraProps> = ({ onCancel }) => {
         ratio={"1:1"}
         useCamera2Api={true}
       >
-        <View style={styles.viewContainer}>
-          <TouchableOpacity style={styles.cancelView} onPress={onCancel}>
-            <Image
-              style={styles.cancelLogo}
-              source={require("../../assets/images/cancel.png")}
-            />
-          </TouchableOpacity>
-        </View>
+        {onCancel && <CancelButton onCancel={onCancel} />}
       </Camera>
     );
   }
@@ -46,18 +40,5 @@ const styles = StyleSheet.create({
   camera: {
     flex: 1,
     overflow: "hidden"
-  },
-  viewContainer: {
-    flex: 1
-  },
-  cancelView: {
-    position: "absolute",
-    top: 75,
-    left: 30,
-    elevation: 10
-  },
-  cancelLogo: {
-    width: 32,
-    height: 32
   }
 });

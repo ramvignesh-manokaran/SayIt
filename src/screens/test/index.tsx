@@ -1,16 +1,11 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { FC, useState } from "react";
-import {
-  SafeAreaView,
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity
-} from "react-native";
+import { SafeAreaView, View, StyleSheet } from "react-native";
 import { RootStackParamList } from "../../../App";
 import AudioRecorder from "../../components/AudioRecorder";
 import BottomDrawer from "../../components/BottomDrawer";
 import CameraWrapper from "../../components/CameraWrapper";
+import VideoPlayer from "../../components/VideoPlayer";
 import { droidSafeArea } from "../../styles";
 
 interface TestScreenProps {
@@ -54,6 +49,11 @@ export const TestScreen: FC<TestScreenProps> = ({ navigation }) => {
       <View style={styles.cameraView}>
         <CameraWrapper onCancel={handleCameraCancel} />
       </View>
+      <View style={styles.videoView}>
+        <VideoPlayer
+          source={require("../../assets/videos/telegram-cloud-document-5-6068647197061153795.mp4")}
+        />
+      </View>
       <View style={styles.recorderVaiew}>
         <AudioRecorder onStopRecording={stopRecording} />
       </View>
@@ -82,5 +82,11 @@ const styles = StyleSheet.create({
   },
   recorderVaiew: {
     flex: 1
+  },
+  videoView: {
+    position: "absolute",
+    top: 75,
+    right: 35,
+    elevation: 10
   }
 });
