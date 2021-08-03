@@ -30,7 +30,7 @@ export const HomeScreen = ({
   const renderSuggestion = ({ item }: { item: string }) => {
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate("Test", { word: item })}
+        onPress={() => navigation.navigate("WordDetails", { word: item })}
         style={{
           height: 50,
           width: "100%",

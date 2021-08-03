@@ -1,5 +1,12 @@
 import React, { FC } from "react";
-import { StyleSheet, TouchableHighlight, Text, View } from "react-native";
+import {
+  StyleSheet,
+  TouchableHighlight,
+  Text,
+  View,
+  StyleProp,
+  ViewStyle
+} from "react-native";
 import { Colors, Typography } from "../../styles";
 
 export enum ButtonType {
@@ -11,11 +18,12 @@ export interface ButtonProps {
   text: string;
   type: ButtonType;
   onPress?: () => void;
+  buttonStyle?: StyleProp<ViewStyle>;
 }
 
-const Button: FC<ButtonProps> = ({ text, type, onPress }) => {
+const Button: FC<ButtonProps> = ({ text, type, onPress, buttonStyle }) => {
   return (
-    <View style={styles.container}>
+    <View style={buttonStyle ? buttonStyle : styles.container}>
       <TouchableHighlight onPress={onPress ? onPress : () => {}}>
         <View
           style={[
@@ -43,8 +51,7 @@ export default Button;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center"
+    flex: 1
   },
   root: {
     borderRadius: 100,
