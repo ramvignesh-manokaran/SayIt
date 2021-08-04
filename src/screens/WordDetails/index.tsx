@@ -13,6 +13,7 @@ import { Colors, droidSafeArea, Typography } from "../../styles";
 import ImageLink from "../../components/ImageLink";
 import ImageTextCombo from "../../components/ImageTextCombo";
 import { RouteProp } from "@react-navigation/native";
+import { useStatusBar } from "../../utils/Hooks";
 
 interface WordDetailsScreenProps {
   navigation: StackNavigationProp<RootStackParamList, "WordDetails">;
@@ -29,15 +30,14 @@ const WordDetailsScreen: FC<WordDetailsScreenProps> = ({
   navigation,
   route
 }) => {
+  useStatusBar("light-content");
+
   const handleLinkClick = () => {
     navigation.navigate("Tutorial", { word: route.params.word });
   };
 
-  console.log("route====>", route);
-
   return (
     <SafeAreaView style={[droidSafeArea, styles.container]}>
-      <StatusBar backgroundColor={Colors.GREEN} barStyle={"light-content"} />
       <ScrollView>
         <View style={styles.textAndSignView}>
           <View style={styles.textView}>
@@ -85,7 +85,8 @@ export default WordDetailsScreen;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 0
+    paddingTop: 30,
+    backgroundColor: Colors.GREEN
   },
   textAndSignView: {
     padding: 15,

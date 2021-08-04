@@ -6,16 +6,16 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  StatusBar,
+  StyleSheet
 } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../../App";
-import { styles } from "../../styles/app";
 import { Colors, droidSafeArea, Typography } from "../../styles";
 import { wordList, WordType } from "../../assets/words/wordList";
+import { useStatusBar } from "../../utils/Hooks";
 
 export const SearchScreen = ({
-  navigation,
+  navigation
 }: {
   navigation: StackNavigationProp<RootStackParamList, "Search">;
 }) => {
@@ -42,6 +42,7 @@ export const SearchScreen = ({
   });
 
   const renderSuggestion = ({ item }: { item: WordType }) => {
+    useStatusBar("dark-content");
     return (
       <TouchableOpacity
         onPress={() => navigation.navigate("WordDetails", { word: item.name })}
@@ -52,7 +53,7 @@ export const SearchScreen = ({
           borderBottomColor: "#ddd",
           borderBottomWidth: 1,
           flexDirection: "row",
-          alignItems: "center",
+          alignItems: "center"
         }}
       >
         <Text
@@ -69,7 +70,6 @@ export const SearchScreen = ({
 
   return (
     <SafeAreaView style={[styles.container, droidSafeArea]}>
-      <StatusBar backgroundColor={Colors.WHITE} barStyle={"dark-content"} />
       <View style={{ marginBottom: 20 }}>
         <Text style={styles.title}>Search</Text>
       </View>
@@ -86,13 +86,13 @@ export const SearchScreen = ({
             width: "100%",
             borderRadius: 25,
             marginBottom: 20,
-            zIndex: 10,
+            zIndex: 10
           }}
           onChangeText={setQuery}
         ></TextInput>
         <FlatList
           style={{
-            width: "100%",
+            width: "100%"
           }}
           contentContainerStyle={{ overflow: "hidden" }}
           data={suggestions}
@@ -103,3 +103,18 @@ export const SearchScreen = ({
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexGrow: 1,
+    backgroundColor: "#fff",
+    justifyContent: "flex-start",
+    paddingLeft: 24,
+    paddingRight: 24
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: "bold"
+  }
+});

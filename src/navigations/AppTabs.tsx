@@ -1,16 +1,17 @@
+import React from "react";
+import { Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { HomeScreen } from "../Home";
-import { Text } from "react-native";
-import React from "react";
-import { SearchScreen } from "../Search";
-import { Colors } from "../../styles";
-import WordLibraryScreen from "../WordLibrary";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import WordDetailsScreen from "../WordDetails";
+
+import { HomeScreen } from "../screens/Home";
+import { SearchScreen } from "../screens/Search";
+import WordLibraryScreen from "../screens/WordLibrary";
+import WordDetailsScreen from "../screens/WordDetails";
+import { Colors } from "../styles";
 
 const Tab = createBottomTabNavigator();
-export const MainTabs = () => {
+export const AppTabs = () => {
   return (
     <Tab.Navigator
       sceneContainerStyle={{ backgroundColor: "white" }}

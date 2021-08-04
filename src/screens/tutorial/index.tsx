@@ -11,7 +11,7 @@ import ControlBar from "../../components/ControlBar";
 import { Playback } from "expo-av/build/AV";
 import CancelButton from "../../components/CancelButton";
 import NextButton from "../../components/NextButton";
-import { Colors } from "../../styles";
+import { useStatusBar } from "../../utils/Hooks";
 
 const TutorialScreen = ({
   navigation,
@@ -20,6 +20,7 @@ const TutorialScreen = ({
   navigation: StackNavigationProp<RootStackParamList, "Tutorial">;
   route: RouteProp<RootStackParamList, "Tutorial">;
 }) => {
+  useStatusBar("dark-content");
   const tutorialVideo = require("../../assets/videos/TutorialApple.mp4");
 
   const windowWidth = useWindowDimensions().width;
@@ -72,7 +73,6 @@ const TutorialScreen = ({
 
   return (
     <SafeAreaView style={styles.safe}>
-      <StatusBar backgroundColor={Colors.WHITE} barStyle={"dark-content"} />
       <CancelButton onCancel={onCancel} />
       <NextButton onNext={onNext} />
       <View></View>

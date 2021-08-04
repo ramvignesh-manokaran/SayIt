@@ -6,20 +6,22 @@ import { RootStackParamList } from "../../../App";
 import LibraryDetails from "../../components/LibraryDetails";
 import PageHeader from "../../components/PageHeader";
 import { libraryDetails } from "../../constants/data";
-import { Colors, droidSafeArea, Typography } from "../../styles";
+import { droidSafeArea, Typography } from "../../styles";
+import { useStatusBar } from "../../utils/Hooks";
 
 interface WordLibraryScreenProps {
   navigation: StackNavigationProp<RootStackParamList, "WordLibrary">;
 }
 
 const WordLibraryScreen: FC<WordLibraryScreenProps> = ({ navigation }) => {
+  useStatusBar("dark-content");
+
   const handleWordsClick = (word: string) => {
     navigation.navigate("WordDetails", { word });
   };
 
   return (
     <SafeAreaView style={droidSafeArea}>
-      <StatusBar backgroundColor={Colors.WHITE} barStyle={"dark-content"} />
       <PageHeader text={"Word Library"} />
       <LibraryDetails data={libraryDetails} onWordsClick={handleWordsClick} />
     </SafeAreaView>

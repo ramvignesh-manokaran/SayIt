@@ -5,23 +5,23 @@ import {
   TextInput,
   Text,
   Image,
-  Button,
   FlatList,
   TouchableOpacity,
-  StatusBar
+  StyleSheet
 } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { styles } from "../../styles/app";
 import { Colors, droidSafeArea, Typography } from "../../styles";
 import { RootStackParamList } from "../../../App";
 import { wordList, WordType } from "../../assets/words/wordList";
+import { useStatusBar } from "../../utils/Hooks";
 
 export const HomeScreen = ({
   navigation
 }: {
   navigation: StackNavigationProp<RootStackParamList, "Home">;
 }) => {
+  useStatusBar("dark-content");
   const recentSearch: WordType[] = wordList.slice(0, 3);
   const renderRecentSearch = ({ item }: { item: WordType }) => {
     return (
@@ -58,10 +58,6 @@ export const HomeScreen = ({
         }
       ]}
     >
-      <StatusBar
-        backgroundColor={Colors.WHITE}
-        barStyle={"dark-content"}
-      ></StatusBar>
       <View style={styles.container}>
         <View style={{ marginBottom: 20 }}>
           <Text style={styles.title}>
@@ -175,3 +171,18 @@ export const HomeScreen = ({
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexGrow: 1,
+    backgroundColor: "#fff",
+    justifyContent: "flex-start",
+    paddingLeft: 24,
+    paddingRight: 24
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: "bold"
+  }
+});

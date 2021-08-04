@@ -4,9 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TestScreen } from "./src/screens/Test";
-import { MainTabs } from "./src/screens/MainScreens";
 import TutorialScreen from "./src/screens/Tutorial";
-import WordDetailsScreen from "./src/screens/WordDetails";
+import { AppTabs } from "./src/navigations/AppTabs";
 
 const Stack = createStackNavigator();
 
@@ -35,7 +34,7 @@ const SayItApp = () => {
             cardStyle: { backgroundColor: "white" }
           }}
         >
-          <Stack.Screen name="Main" component={MainTabs} />
+          <Stack.Screen name="Main" component={AppTabs} />
           <Stack.Screen name="Tutorial" component={TutorialScreen} />
           <Stack.Screen name="Test" component={TestScreen} />
         </Stack.Navigator>

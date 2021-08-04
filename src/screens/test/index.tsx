@@ -9,6 +9,7 @@ import BottomDrawer from "../../components/BottomDrawer";
 import CameraWrapper from "../../components/CameraWrapper";
 import VideoPlayer from "../../components/VideoPlayer";
 import { Colors, droidSafeArea } from "../../styles";
+import { useStatusBar } from "../../utils/Hooks";
 
 interface TestScreenProps {
   navigation: StackNavigationProp<RootStackParamList, "Test">;
@@ -16,6 +17,7 @@ interface TestScreenProps {
 }
 
 export const TestScreen: FC<TestScreenProps> = ({ navigation, route }) => {
+  useStatusBar("dark-content");
   const [recorderUri, setRecorderUri] = useState<string | null>("");
   const [showAudioSubmitDrawer, setShowAudioSubmitDrawer] = useState(false);
   const [showSubmitSuccessDrawer, setShowSubmitSuccessDrawer] = useState(false);
@@ -49,7 +51,6 @@ export const TestScreen: FC<TestScreenProps> = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={droidSafeArea}>
-      <StatusBar backgroundColor={Colors.WHITE} barStyle={"dark-content"} />
       <View style={styles.cameraView}>
         <CameraWrapper onCancel={handleCameraCancel} />
       </View>
