@@ -9,6 +9,7 @@ import { SearchScreen } from "../screens/Search";
 import WordLibraryScreen from "../screens/WordLibrary";
 import WordDetailsScreen from "../screens/WordDetails";
 import { Colors } from "../styles";
+import TopicScreen from "../screens/Topic";
 
 const Tab = createBottomTabNavigator();
 export const AppTabs = () => {
@@ -36,7 +37,7 @@ export const AppTabs = () => {
       ></Tab.Screen>
       <Tab.Screen
         name="Category"
-        component={CategoryScreen}
+        component={TopicScreen} // @todo : to replace with category screen
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
@@ -78,12 +79,6 @@ export const AppTabs = () => {
     </Tab.Navigator>
   );
 };
-
-const CategoryScreen = () => (
-  <SafeAreaView>
-    <Text>CategoryScreen</Text>
-  </SafeAreaView>
-);
 
 const ProfileScreen = () => (
   <SafeAreaView>

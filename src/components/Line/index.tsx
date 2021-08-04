@@ -1,9 +1,13 @@
 import React, { FC } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
 import { Colors } from "../../styles";
 
-const Line: FC = () => {
-  return <View style={styles.container} />;
+interface LineProps {
+  style?: StyleProp<ViewStyle>;
+}
+
+const Line: FC<LineProps> = ({ style }) => {
+  return <View style={[styles.container, style]} />;
 };
 
 export default Line;

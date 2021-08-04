@@ -1,19 +1,44 @@
 import React, { FC } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { Colors, Typography } from "../../styles";
 
 interface WordSyllableProps {
   word: string;
   syllable: string;
+  showTick?: boolean;
   onPress: (word: string) => void;
 }
 
-const WordSyllable: FC<WordSyllableProps> = ({ word, syllable, onPress }) => {
+const WordSyllable: FC<WordSyllableProps> = ({
+  word,
+  syllable,
+  onPress,
+  showTick
+}) => {
   return (
     <View>
       <TouchableOpacity onPress={() => onPress(word)} style={styles.container}>
         <Text style={styles.wordText}>{word}</Text>
         <Text style={styles.syllableText}>{syllable}</Text>
+        {showTick && (
+          <View style={styles.tickView}>
+            <MaterialCommunityIcons
+              color={Colors.GREEN}
+              size={24}
+              name="check-circle"
+            />
+          </View>
+        )}
+        {!showTick && showTick !== undefined && (
+          <View style={styles.tickView}>
+            <MaterialCommunityIcons
+              color={Colors.LIGHT_GRAY}
+              size={24}
+              name="circle-outline"
+            />
+          </View>
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -33,5 +58,9 @@ const styles = StyleSheet.create({
   syllableText: {
     ...Typography.normal,
     color: Colors.GRAY
+  },
+  tickView: {
+    alignItems: "flex-end",
+    flex: 1
   }
 });

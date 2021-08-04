@@ -21,6 +21,7 @@ export type RootStackParamList = {
   WordDetails: { word: string };
   WordLibrary: undefined;
   Tutorial: { word: string };
+  Topic: undefined;
 };
 
 const SayItApp = () => {
