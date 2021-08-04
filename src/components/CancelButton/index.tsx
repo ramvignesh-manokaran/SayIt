@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { TouchableOpacity, View, StyleSheet, Image } from "react-native";
+import { TouchableOpacity, View, StyleSheet, Image, Pressable } from "react-native";
 
 interface CancelButtonProps {
   onCancel?: () => void;
@@ -8,12 +8,12 @@ interface CancelButtonProps {
 const CancelButton: FC<CancelButtonProps> = ({ onCancel }) => {
   return (
     <View style={styles.viewContainer}>
-      <TouchableOpacity style={styles.cancelView} onPress={onCancel}>
+      <Pressable style={styles.cancelView} onPress={onCancel}>
         <Image
           style={styles.cancelLogo}
           source={require("../../assets/images/cancel.png")}
         />
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 };
@@ -22,16 +22,18 @@ export default CancelButton;
 
 const styles = StyleSheet.create({
   viewContainer: {
-    flex: 1
+    flex: 1,
   },
   cancelView: {
     position: "absolute",
     top: 75,
     left: 30,
-    elevation: 10
+    zIndex: 10,
+    borderRadius: 16,
+    backgroundColor: "#fff",
   },
   cancelLogo: {
     width: 32,
-    height: 32
+    height: 32,
   }
 });

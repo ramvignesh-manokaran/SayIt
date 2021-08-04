@@ -51,7 +51,7 @@ export const TestScreen: FC<TestScreenProps> = ({ navigation }) => {
       </View>
       <View style={styles.videoView}>
         <VideoPlayer
-          source={require("../../assets/videos/telegram-cloud-document-5-6068647197061153795.mp4")}
+          source={require("../../assets/videos/TutorialApple.mp4")}
         />
       </View>
       <View style={styles.recorderVaiew}>

@@ -1,6 +1,6 @@
 import React, { FC, useRef, useState } from "react";
 import { View, StyleSheet, Button } from "react-native";
-import { Video } from "expo-av";
+import { Video, VideoProps } from "expo-av";
 import { AVPlaybackSource } from "expo-av/build/AV";
 
 export enum VideoPlayerShapes {
@@ -10,9 +10,10 @@ export enum VideoPlayerShapes {
 
 interface VideoPlayerProps {
   source: AVPlaybackSource | undefined;
+  videoProps?: VideoProps; 
 }
 
-const VideoPlayer: FC<VideoPlayerProps> = ({ source }) => {
+const VideoPlayer: FC<VideoPlayerProps> = ({ source, videoProps }) => {
   const video = useRef<any>(null);
   const [status, setStatus] = useState<any>({});
   return (
@@ -25,6 +26,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ source }) => {
         resizeMode="cover"
         isLooping
         onPlaybackStatusUpdate={status => setStatus(() => status)}
+        {...videoProps}
       />
       {/* <View style={styles.buttons}>
         <Button
