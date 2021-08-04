@@ -10,8 +10,8 @@ interface WordSyllableProps {
 
 const WordSyllable: FC<WordSyllableProps> = ({ word, syllable, onPress }) => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={() => onPress(word)}>
+    <View>
+      <TouchableOpacity onPress={() => onPress(word)} style={styles.container}>
         <Text style={styles.wordText}>{word}</Text>
         <Text style={styles.syllableText}>{syllable}</Text>
       </TouchableOpacity>

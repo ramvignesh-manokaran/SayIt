@@ -24,7 +24,7 @@ const TutorialScreen = ({
   const tutorialVideo = require("../../assets/videos/TutorialApple.mp4");
 
   const windowWidth = useWindowDimensions().width;
-  const videoObject = useRef<Playback>(null);
+  const videoObject = useRef<any>(null);
 
   const [videoHeight, setVideoHeight] = useState(300);
   const [fullVideoDuration, setFullVideoDuration] = useState(0);

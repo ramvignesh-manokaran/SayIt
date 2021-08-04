@@ -59,7 +59,8 @@ export default ImageTextCombo;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15
+    padding: 15,
+    backgroundColor: Colors.WHITE
   },
   imageTouchableStyles: {
     flex: 1
