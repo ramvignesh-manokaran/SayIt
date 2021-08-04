@@ -1,13 +1,13 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { HomeScreen } from "../home";
+import { HomeScreen } from "../Home";
 import { Text } from "react-native";
 import React from "react";
 import { SearchScreen } from "../Search";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { Colors } from "../../styles";
 import WordLibraryScreen from "../word-library";
 import WordDetailsScreen from "../word-details";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Tab = createBottomTabNavigator();
 export const MainTabs = () => {
@@ -17,7 +17,7 @@ export const MainTabs = () => {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarActiveTintColor: Colors.GREEN
+        tabBarActiveTintColor: Colors.GREEN,
       }}
     >
       <Tab.Screen
@@ -25,8 +25,12 @@ export const MainTabs = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons color={color} size={size} name="home" />
-          )
+            <MaterialCommunityIcons
+              name="home"
+              color={color}
+              size={size}
+            ></MaterialCommunityIcons>
+          ),
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -39,7 +43,7 @@ export const MainTabs = () => {
               size={size}
               name="view-grid"
             />
-          )
+          ),
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -48,7 +52,7 @@ export const MainTabs = () => {
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons color={color} size={size} name="bookmark" />
-          )
+          ),
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -57,7 +61,7 @@ export const MainTabs = () => {
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons color={color} size={size} name="account" />
-          )
+          ),
         }}
       ></Tab.Screen>
       <Tab.Screen

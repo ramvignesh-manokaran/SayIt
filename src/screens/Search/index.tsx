@@ -8,7 +8,6 @@ import React, {
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   FlatList,
-  Keyboard,
   Text,
   TextInput,
   TouchableOpacity,
@@ -17,23 +16,23 @@ import {
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../../App";
 import { styles } from "../../styles/app";
-import { droidSafeArea } from "../../styles";
+import { Colors, droidSafeArea, Typography } from "../../styles";
+import { wordList, WordType } from "../../assets/words/wordList";
 
 export const SearchScreen = ({
   navigation,
 }: {
   navigation: StackNavigationProp<RootStackParamList, "Search">;
 }) => {
-  const wordList = ["Apple", "Book", "Water"];
   const [query, setQuery] = useState<string>("");
-  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [suggestions, setSuggestions] = useState<WordType[]>([]);
   let textInputRef = createRef<TextInput>();
 
   useEffect(() => {
     if (query) {
       setSuggestions(
-        wordList.filter((word) =>
-          word.toLowerCase().includes(query.toLowerCase())
+        wordList.filter((word: WordType) =>
+          word.name.toLowerCase().includes(query.toLowerCase())
         )
       );
     } else {
@@ -47,20 +46,24 @@ export const SearchScreen = ({
     }
   });
 
-  const renderSuggestion = ({ item }: { item: string }) => {
+  const renderSuggestion = ({ item }: { item: WordType }) => {
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate("WordDetails", { word: item })}
+        onPress={() => navigation.navigate("WordDetails", { word: item.name })}
         style={{
           height: 50,
           width: "100%",
           paddingHorizontal: 25,
           borderBottomColor: "#ddd",
           borderBottomWidth: 1,
-          justifyContent: "center",
+          flexDirection: "row",
+          alignItems: "center",
         }}
       >
-        <Text>{item}</Text>
+        <Text style={[Typography.normal]}>{item.name} </Text>
+        <Text style={[Typography.normal, { color: Colors.GRAY }]}>
+          {item.phonics}
+        </Text>
       </TouchableOpacity>
     );
   };
@@ -73,6 +76,7 @@ export const SearchScreen = ({
       <View>
         <TextInput
           ref={textInputRef}
+          autoFocus
           placeholder={"Search word (e.g. Book)"}
           style={{
             paddingHorizontal: 25,
