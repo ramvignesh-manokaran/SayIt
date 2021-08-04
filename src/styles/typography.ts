@@ -5,3 +5,7 @@ export const normal = {
 export const header = {
   fontSize: 28
 };
+
+export const small = {
+  fontSize: 10
+};
