@@ -1,11 +1,11 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { FC } from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
 import { RootStackParamList } from "../../../App";
 import LibraryDetails from "../../components/LibraryDetails";
 import PageHeader from "../../components/PageHeader";
 import { libraryDetails } from "../../constants/data";
-import { droidSafeArea, Typography } from "../../styles";
+import { Colors, droidSafeArea, Typography } from "../../styles";
 
 interface WordLibraryScreenProps {
   navigation: StackNavigationProp<RootStackParamList, "WordLibrary">;
@@ -14,6 +14,7 @@ interface WordLibraryScreenProps {
 const WordLibraryScreen: FC<WordLibraryScreenProps> = ({ navigation }) => {
   return (
     <SafeAreaView style={droidSafeArea}>
+      <StatusBar backgroundColor={Colors.WHITE} barStyle={"dark-content"} />
       <PageHeader text={"Word Library"} />
       <LibraryDetails data={libraryDetails} />
     </SafeAreaView>
@@ -23,9 +24,6 @@ const WordLibraryScreen: FC<WordLibraryScreenProps> = ({ navigation }) => {
 export default WordLibraryScreen;
 
 const styles = StyleSheet.create({
-  pageHeader: {
-    paddingTop: 10
-  },
   headerText: {
     ...Typography.header,
     fontWeight: "bold"

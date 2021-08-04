@@ -4,8 +4,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TestScreen } from "./src/screens/test";
-// import WordDetailsScreen from "./src/screens/word-details";
-// import WordLibraryScreen from "./src/screens/word-library";
 import { MainTabs } from "./src/screens/MainScreens";
 import TutorialScreen from "./src/screens/tutorial";
 
@@ -36,16 +34,6 @@ const SayItApp = () => {
             cardStyle: { backgroundColor: "white" }
           }}
         >
-          {/* <Stack.Screen name="Home" component={HomeScreen}></Stack.Screen>
-          <Stack.Screen name="Word" component={WordScreen}></Stack.Screen>
-          <Stack.Screen
-            name="WordLibrary"
-            component={WordLibraryScreen}
-          ></Stack.Screen>
-          <Stack.Screen
-            name="WordDetails"
-            component={WordDetailsScreen}
-          ></Stack.Screen> */}
           <Stack.Screen name="Main" component={MainTabs}></Stack.Screen>
           <Stack.Screen
             name="Tutorial"

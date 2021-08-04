@@ -17,8 +17,8 @@ interface LibraryDetailsProps {
 const LibraryDetails: FC<LibraryDetailsProps> = ({ data }) => {
   return (
     <View style={styles.container}>
-      {data.map((data: LibraryDetail) => (
-        <View style={styles.detail}>
+      {data.map((data: LibraryDetail, index: number) => (
+        <View style={styles.detail} key={index}>
           <Text style={styles.header}>{data.header}</Text>
           <Line />
           <WordSyllable word={data.word} syllable={data.syllable} />

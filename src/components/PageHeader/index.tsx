@@ -18,7 +18,10 @@ export default PageHeader;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 30
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingRight: 15,
+    paddingLeft: 15
   },
   headerText: {
     ...Typography.header,
