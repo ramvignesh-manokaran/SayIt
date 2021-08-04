@@ -55,7 +55,11 @@ export const SearchScreen = ({
           alignItems: "center",
         }}
       >
-        <Text style={[Typography.normal]}>{item.name} </Text>
+        <Text
+          style={[Typography.normal, { fontWeight: "bold", paddingRight: 5 }]}
+        >
+          {item.name}
+        </Text>
         <Text style={[Typography.normal, { color: Colors.GRAY }]}>
           {item.phonics}
         </Text>
