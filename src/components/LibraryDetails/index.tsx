@@ -12,16 +12,21 @@ export interface LibraryDetail {
 
 interface LibraryDetailsProps {
   data: LibraryDetail[];
+  onWordsClick: (word: string) => void;
 }
 
-const LibraryDetails: FC<LibraryDetailsProps> = ({ data }) => {
+const LibraryDetails: FC<LibraryDetailsProps> = ({ data, onWordsClick }) => {
   return (
     <View style={styles.container}>
       {data.map((data: LibraryDetail, index: number) => (
         <View style={styles.detail} key={index}>
           <Text style={styles.header}>{data.header}</Text>
           <Line />
-          <WordSyllable word={data.word} syllable={data.syllable} />
+          <WordSyllable
+            word={data.word}
+            syllable={data.syllable}
+            onPress={onWordsClick}
+          />
           <Line />
         </View>
       ))}

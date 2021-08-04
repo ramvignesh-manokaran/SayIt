@@ -10,7 +10,7 @@ export enum VideoPlayerShapes {
 
 interface VideoPlayerProps {
   source: AVPlaybackSource | undefined;
-  videoProps?: VideoProps; 
+  videoProps?: VideoProps;
 }
 
 const VideoPlayer: FC<VideoPlayerProps> = ({ source, videoProps }) => {
@@ -26,18 +26,9 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ source, videoProps }) => {
         resizeMode="cover"
         isLooping
         onPlaybackStatusUpdate={status => setStatus(() => status)}
+        isMuted={true}
         {...videoProps}
       />
-      {/* <View style={styles.buttons}>
-        <Button
-          title={status.isPlaying ? "Pause" : "Play"}
-          onPress={() =>
-            status.isPlaying
-              ? video.current.pauseAsync()
-              : video.current.playAsync()
-          }
-        />
-      </View> */}
     </View>
   );
 };
@@ -57,10 +48,5 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 75
-  },
-  buttons: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
   }
 });

@@ -1,17 +1,20 @@
 import React, { FC } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Colors, Typography } from "../../styles";
 
 interface WordSyllableProps {
   word: string;
   syllable: string;
+  onPress: (word: string) => void;
 }
 
-const WordSyllable: FC<WordSyllableProps> = ({ word, syllable }) => {
+const WordSyllable: FC<WordSyllableProps> = ({ word, syllable, onPress }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.wordText}>{word}</Text>
-      <Text style={styles.syllableText}>{syllable}</Text>
+      <TouchableOpacity onPress={() => onPress(word)}>
+        <Text style={styles.wordText}>{word}</Text>
+        <Text style={styles.syllableText}>{syllable}</Text>
+      </TouchableOpacity>
     </View>
   );
 };

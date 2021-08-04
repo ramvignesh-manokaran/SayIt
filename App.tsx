@@ -36,7 +36,6 @@ const SayItApp = () => {
           }}
         >
           <Stack.Screen name="Main" component={MainTabs} />
-          <Stack.Screen name="WordDetails" component={WordDetailsScreen} />
           <Stack.Screen name="Tutorial" component={TutorialScreen} />
           <Stack.Screen name="Test" component={TestScreen} />
         </Stack.Navigator>

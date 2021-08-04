@@ -1,3 +1,4 @@
+import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { FC } from "react";
 import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
@@ -12,11 +13,15 @@ interface WordLibraryScreenProps {
 }
 
 const WordLibraryScreen: FC<WordLibraryScreenProps> = ({ navigation }) => {
+  const handleWordsClick = (word: string) => {
+    navigation.navigate("WordDetails", { word });
+  };
+
   return (
     <SafeAreaView style={droidSafeArea}>
       <StatusBar backgroundColor={Colors.WHITE} barStyle={"dark-content"} />
       <PageHeader text={"Word Library"} />
-      <LibraryDetails data={libraryDetails} />
+      <LibraryDetails data={libraryDetails} onWordsClick={handleWordsClick} />
     </SafeAreaView>
   );
 };

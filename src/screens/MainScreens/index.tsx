@@ -7,6 +7,7 @@ import { SearchScreen } from "../Search";
 import { Colors } from "../../styles";
 import WordLibraryScreen from "../WordLibrary";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import WordDetailsScreen from "../WordDetails";
 
 const Tab = createBottomTabNavigator();
 export const MainTabs = () => {
@@ -66,6 +67,11 @@ export const MainTabs = () => {
       <Tab.Screen
         name="Search"
         component={SearchScreen}
+        options={{ tabBarButton: () => null }}
+      ></Tab.Screen>
+      <Tab.Screen
+        name="WordDetails"
+        component={WordDetailsScreen}
         options={{ tabBarButton: () => null }}
       ></Tab.Screen>
     </Tab.Navigator>

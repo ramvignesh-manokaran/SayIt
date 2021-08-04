@@ -29,14 +29,11 @@ const WordDetailsScreen: FC<WordDetailsScreenProps> = ({
   navigation,
   route
 }) => {
-  const handleSignLangClick = () => {
-    // @todo navigate to sign language video
-  };
-
-  // @todo navigate to video page instead of test page
   const handleLinkClick = () => {
     navigation.navigate("Tutorial", { word: route.params.word });
   };
+
+  console.log("route====>", route);
 
   return (
     <SafeAreaView style={[droidSafeArea, styles.container]}>
@@ -49,7 +46,6 @@ const WordDetailsScreen: FC<WordDetailsScreenProps> = ({
           </View>
           <ImageLink
             imgSource={require("../../assets/images/sign-language-link.png")}
-            onPress={handleSignLangClick}
             touchableStyles={styles.signLangView}
             imageStyles={styles.signLogo}
           />

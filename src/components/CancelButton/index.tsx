@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { StyleSheet } from "react-native";
+import { Colors } from "../../styles";
 import ImageLink from "../ImageLink";
 
 interface CancelButtonProps {
@@ -26,10 +27,10 @@ const styles = StyleSheet.create({
     left: 30,
     zIndex: 10,
     borderRadius: 16,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.WHITE
   },
   cancelLogo: {
     width: 32,
-    height: 32,
+    height: 32
   }
 });
