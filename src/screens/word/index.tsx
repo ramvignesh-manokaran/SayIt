@@ -1,7 +1,7 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { View, Text, SafeAreaView, Button } from "react-native";
+import { Text, SafeAreaView, Button } from "react-native";
 import { RootStackParamList } from "../../../App";
 import { droidSafeArea } from "../../styles";
 
