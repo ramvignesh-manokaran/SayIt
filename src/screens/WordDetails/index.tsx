@@ -1,30 +1,18 @@
 import React, { FC } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
-import {
-  SafeAreaView,
-  View,
-  StyleSheet,
-  Text,
-  StatusBar,
-  ScrollView
-} from "react-native";
+import { SafeAreaView, View, StyleSheet, Text, ScrollView } from "react-native";
 import { RootStackParamList } from "../../../App";
 import { Colors, droidSafeArea, Typography } from "../../styles";
 import ImageLink from "../../components/ImageLink";
 import ImageTextCombo from "../../components/ImageTextCombo";
 import { RouteProp } from "@react-navigation/native";
 import { useStatusBar } from "../../utils/Hooks";
+import { syllableAppData, syllableLeData } from "../../constants/data";
 
 interface WordDetailsScreenProps {
   navigation: StackNavigationProp<RootStackParamList, "WordDetails">;
   route: RouteProp<RootStackParamList, "WordDetails">;
 }
-
-const syllableAppData: string[] = ["2 letter Ps but just one P sound"];
-const syllableLeData: string[] = [
-  "The second syllable is unstressed",
-  "Only a dark L can be heard"
-];
 
 const WordDetailsScreen: FC<WordDetailsScreenProps> = ({
   navigation,

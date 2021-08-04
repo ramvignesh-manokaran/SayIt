@@ -29,16 +29,15 @@ const TopicScreen: FC<TopicScreenProps> = ({ navigation }) => {
       </View>
       <View style={styles.conversation}>
         {wordSyllables.map((item: Conversation, index: number) => (
-          <>
+          <View key={index}>
             <WordSyllable
-              key={index}
               word={item.word}
               syllable={item.syllable}
               onPress={handleWordsClick}
               showTick={item.learnt}
             />
             <Line />
-          </>
+          </View>
         ))}
       </View>
     </SafeAreaView>

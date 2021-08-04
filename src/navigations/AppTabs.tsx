@@ -10,6 +10,7 @@ import WordLibraryScreen from "../screens/WordLibrary";
 import WordDetailsScreen from "../screens/WordDetails";
 import { Colors } from "../styles";
 import TopicScreen from "../screens/Topic";
+import ProfileScreen from "../screens/Profile";
 
 const Tab = createBottomTabNavigator();
 export const AppTabs = () => {
@@ -79,9 +80,3 @@ export const AppTabs = () => {
     </Tab.Navigator>
   );
 };
-
-const ProfileScreen = () => (
-  <SafeAreaView>
-    <Text>ProfileScreen</Text>
-  </SafeAreaView>
-);

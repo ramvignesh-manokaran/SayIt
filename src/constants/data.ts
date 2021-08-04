@@ -91,3 +91,10 @@ export const wordSyllables: Conversation[] = [
     learnt: false
   }
 ];
+
+export const syllableAppData: string[] = ["2 letter Ps but just one P sound"];
+
+export const syllableLeData: string[] = [
+  "The second syllable is unstressed",
+  "Only a dark L can be heard"
+];
