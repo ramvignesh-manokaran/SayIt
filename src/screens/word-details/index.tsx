@@ -35,7 +35,7 @@ const WordDetailsScreen: FC<WordDetailsScreenProps> = ({
 
   // @todo navigate to video page instead of test page
   const handleLinkClick = () => {
-    navigation.navigate("Test", { word: route.params.word });
+    navigation.navigate("Tutorial", { word: route.params.word });
   };
 
   return (

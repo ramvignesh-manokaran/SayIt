@@ -24,10 +24,12 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 75,
     left: 30,
-    elevation: 10
+    zIndex: 10,
+    borderRadius: 16,
+    backgroundColor: "#fff",
   },
   cancelLogo: {
     width: 32,
-    height: 32
+    height: 32,
   }
 });
