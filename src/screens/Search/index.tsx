@@ -17,6 +17,7 @@ import {
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../../App";
 import { styles } from "../../styles/app";
+import { droidSafeArea } from "../../styles";
 
 export const SearchScreen = ({
   navigation,
@@ -25,7 +26,7 @@ export const SearchScreen = ({
 }) => {
   const wordList = ["Apple", "Book", "Water"];
   const [query, setQuery] = useState<string>("");
-  const [suggestions, setSuggestions] = useState<string[]>(wordList);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
   let textInputRef = createRef<TextInput>();
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export const SearchScreen = ({
   const renderSuggestion = ({ item }: { item: string }) => {
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate("Word", { word: item })}
+        onPress={() => navigation.navigate("WordDetails", { word: item })}
         style={{
           height: 50,
           width: "100%",
@@ -65,7 +66,7 @@ export const SearchScreen = ({
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, droidSafeArea]}>
       <View style={{ marginBottom: 20 }}>
         <Text style={styles.title}>Search</Text>
       </View>
