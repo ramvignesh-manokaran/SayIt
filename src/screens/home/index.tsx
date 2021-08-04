@@ -8,7 +8,7 @@ import {
   Button,
   FlatList,
   TouchableOpacity,
-  StatusBar,
+  StatusBar
 } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -18,7 +18,7 @@ import { RootStackParamList } from "../../../App";
 import { wordList, WordType } from "../../assets/words/wordList";
 
 export const HomeScreen = ({
-  navigation,
+  navigation
 }: {
   navigation: StackNavigationProp<RootStackParamList, "Home">;
 }) => {
@@ -33,7 +33,7 @@ export const HomeScreen = ({
           borderBottomColor: "#ddd",
           borderBottomWidth: 1,
           flexDirection: "row",
-          alignItems: "center",
+          alignItems: "center"
         }}
       >
         <Text
@@ -54,8 +54,8 @@ export const HomeScreen = ({
         droidSafeArea,
         {
           flex: 1,
-          flexGrow: 1,
-        },
+          flexGrow: 1
+        }
       ]}
     >
       <StatusBar
@@ -78,7 +78,7 @@ export const HomeScreen = ({
               borderRadius: 20,
               backgroundColor: Colors.ORANGE,
               marginBottom: 20,
-              flexDirection: "row",
+              flexDirection: "row"
             }}
           >
             <Image
@@ -86,7 +86,7 @@ export const HomeScreen = ({
                 height: 180,
                 width: 150,
                 marginLeft: 10,
-                marginTop: "auto",
+                marginTop: "auto"
               }}
               source={require("../../assets/images/phone.png")}
             ></Image>
@@ -95,7 +95,7 @@ export const HomeScreen = ({
                 flex: 1,
                 flexDirection: "column",
                 alignItems: "flex-start",
-                justifyContent: "center",
+                justifyContent: "center"
               }}
             >
               <Text
@@ -103,7 +103,7 @@ export const HomeScreen = ({
                   color: "white",
                   fontSize: 30,
                   fontWeight: "700",
-                  lineHeight: 32,
+                  lineHeight: 32
                 }}
               >
                 Daily Practice
@@ -113,7 +113,7 @@ export const HomeScreen = ({
                   color: "white",
                   fontSize: 16,
                   marginBottom: 16,
-                  fontWeight: "600",
+                  fontWeight: "600"
                 }}
               >
                 5 words a day
@@ -126,14 +126,14 @@ export const HomeScreen = ({
                     borderRadius: 24,
                     paddingHorizontal: 24,
                     justifyContent: "center",
-                    alignItems: "center",
+                    alignItems: "center"
                   }}
                 >
                   <Text
                     style={{
                       fontSize: 16,
                       color: "white",
-                      fontWeight: "600",
+                      fontWeight: "600"
                     }}
                   >
                     Start Now
@@ -158,7 +158,7 @@ export const HomeScreen = ({
                 backgroundColor: "#eee",
                 height: 50,
                 width: "100%",
-                borderRadius: 25,
+                borderRadius: 25
               }}
             />
           </View>

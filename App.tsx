@@ -3,10 +3,10 @@ import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { TestScreen } from "./src/screens/test";
+import { TestScreen } from "./src/screens/Test";
 import { MainTabs } from "./src/screens/MainScreens";
-import TutorialScreen from "./src/screens/tutorial";
-import WordDetailsScreen from "./src/screens/word-details";
+import TutorialScreen from "./src/screens/Tutorial";
+import WordDetailsScreen from "./src/screens/WordDetails";
 
 const Stack = createStackNavigator();
 

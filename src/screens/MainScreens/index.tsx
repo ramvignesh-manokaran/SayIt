@@ -5,8 +5,7 @@ import { Text } from "react-native";
 import React from "react";
 import { SearchScreen } from "../Search";
 import { Colors } from "../../styles";
-import WordLibraryScreen from "../word-library";
-import WordDetailsScreen from "../word-details";
+import WordLibraryScreen from "../WordLibrary";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Tab = createBottomTabNavigator();
@@ -17,7 +16,7 @@ export const MainTabs = () => {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarActiveTintColor: Colors.GREEN,
+        tabBarActiveTintColor: Colors.GREEN
       }}
     >
       <Tab.Screen
@@ -30,7 +29,7 @@ export const MainTabs = () => {
               color={color}
               size={size}
             ></MaterialCommunityIcons>
-          ),
+          )
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -43,7 +42,7 @@ export const MainTabs = () => {
               size={size}
               name="view-grid"
             />
-          ),
+          )
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -52,7 +51,7 @@ export const MainTabs = () => {
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons color={color} size={size} name="bookmark" />
-          ),
+          )
         }}
       ></Tab.Screen>
       <Tab.Screen
@@ -61,7 +60,7 @@ export const MainTabs = () => {
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons color={color} size={size} name="account" />
-          ),
+          )
         }}
       ></Tab.Screen>
       <Tab.Screen
