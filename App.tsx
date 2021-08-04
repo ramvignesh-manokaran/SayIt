@@ -7,6 +7,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { WordScreen } from "./src/screens/word";
 import { TestScreen } from "./src/screens/test";
 import WordDetailsScreen from "./src/screens/word-details";
+import WordLibraryScreen from "./src/screens/word-library";
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ export type RootStackParamList = {
   Word: { word: string };
   Test: { word: string };
   WordDetails: { word: string };
+  WordLibrary: undefined;
 };
 
 const SayItApp = () => {
@@ -22,7 +24,7 @@ const SayItApp = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="WordLibrary"
           screenOptions={{
             headerShown: false,
             cardStyle: { backgroundColor: "white" }
@@ -30,6 +32,10 @@ const SayItApp = () => {
         >
           <Stack.Screen name="Home" component={HomeScreen}></Stack.Screen>
           <Stack.Screen name="Word" component={WordScreen}></Stack.Screen>
+          <Stack.Screen
+            name="WordLibrary"
+            component={WordLibraryScreen}
+          ></Stack.Screen>
           <Stack.Screen
             name="WordDetails"
             component={WordDetailsScreen}

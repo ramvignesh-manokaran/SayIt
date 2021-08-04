@@ -19,8 +19,8 @@ interface WordDetailsScreenProps {
   route: RouteProp<RootStackParamList, "WordDetails">;
 }
 
-const sylableAppData: string[] = ["2 letter Ps but just one P sound"];
-const sylableLeData: string[] = [
+const syllableAppData: string[] = ["2 letter Ps but just one P sound"];
+const syllableLeData: string[] = [
   "The second syllable is unstressed",
   "Only a dark L can be heard"
 ];
@@ -64,20 +64,20 @@ const WordDetailsScreen: FC<WordDetailsScreenProps> = ({
         </View>
 
         <ImageTextCombo
-          imgSource={require("../../assets/images/apple-sylable-app-link.png")}
+          imgSource={require("../../assets/images/apple-syllable-app-link.png")}
           onImageClick={handleLinkClick}
           header={"/æp/"}
-          listData={sylableAppData}
+          listData={syllableAppData}
           buttonList={[
             { text: "/æ/", onPress: handleLinkClick },
             { text: "/p/", onPress: handleLinkClick }
           ]}
         />
         <ImageTextCombo
-          imgSource={require("../../assets/images/apple-sylable-app-link.png")}
+          imgSource={require("../../assets/images/apple-syllable-le-link.png")}
           onImageClick={handleLinkClick}
           header={"/l̩/"}
-          listData={sylableLeData}
+          listData={syllableLeData}
           buttonList={[{ text: "/l̩/", onPress: handleLinkClick }]}
         />
       </ScrollView>

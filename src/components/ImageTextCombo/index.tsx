@@ -3,6 +3,7 @@ import { ImageSourcePropType, StyleSheet, View, Text } from "react-native";
 import { Typography, Colors } from "../../styles";
 import Button, { ButtonType } from "../Button";
 import ImageLink from "../ImageLink";
+import Line from "../Line";
 import List from "../List";
 
 interface ButtonListItem {
@@ -48,7 +49,7 @@ const ImageTextCombo: FC<ImageTextComboProps> = ({
           />
         ))}
       </View>
-      <View style={styles.lineView} />
+      <Line />
     </View>
   );
 };
@@ -87,11 +88,5 @@ const styles = StyleSheet.create({
   buttonStyle: {
     width: 100,
     marginRight: 10
-  },
-  lineView: {
-    borderBottomColor: Colors.LIGHT_GRAY,
-    borderBottomWidth: 1,
-    marginTop: 10,
-    marginBottom: 10
   }
 });
