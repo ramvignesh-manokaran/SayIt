@@ -91,9 +91,6 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 0
   },
-  statusBarStyle: {
-    color: Colors.WHITE
-  },
   textAndSignView: {
     padding: 15,
     backgroundColor: Colors.GREEN,

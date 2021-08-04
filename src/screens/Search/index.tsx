@@ -1,10 +1,4 @@
-import React, {
-  createRef,
-  MutableRefObject,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { createRef, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   FlatList,
@@ -70,6 +64,7 @@ export const SearchScreen = ({
 
   return (
     <SafeAreaView style={[styles.container, droidSafeArea]}>
+      <StatusBar backgroundColor={Colors.WHITE} barStyle={"dark-content"} />
       <View style={{ marginBottom: 20 }}>
         <Text style={styles.title}>Search</Text>
       </View>

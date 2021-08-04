@@ -69,11 +69,6 @@ export const MainTabs = () => {
         component={SearchScreen}
         options={{ tabBarButton: () => null }}
       ></Tab.Screen>
-      <Tab.Screen
-        name="WordDetails"
-        component={WordDetailsScreen}
-        options={{ tabBarButton: () => null }}
-      ></Tab.Screen>
     </Tab.Navigator>
   );
 };

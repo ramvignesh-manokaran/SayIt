@@ -8,6 +8,7 @@ import {
   Button,
   FlatList,
   TouchableOpacity,
+  StatusBar,
 } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -53,6 +54,10 @@ export const HomeScreen = ({
         },
       ]}
     >
+      <StatusBar
+        backgroundColor={Colors.WHITE}
+        barStyle={"dark-content"}
+      ></StatusBar>
       <View style={styles.container}>
         <View style={{ marginBottom: 20 }}>
           <Text style={styles.title}>
