@@ -1,6 +1,8 @@
+import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { FC, useState } from "react";
 import { SafeAreaView, View, StyleSheet } from "react-native";
+import { TabRouter } from "react-navigation";
 import { RootStackParamList } from "../../../App";
 import AudioRecorder from "../../components/AudioRecorder";
 import BottomDrawer from "../../components/BottomDrawer";
@@ -10,9 +12,10 @@ import { droidSafeArea } from "../../styles";
 
 interface TestScreenProps {
   navigation: StackNavigationProp<RootStackParamList, "Test">;
+  route: RouteProp<RootStackParamList, "Test">;
 }
 
-export const TestScreen: FC<TestScreenProps> = ({ navigation }) => {
+export const TestScreen: FC<TestScreenProps> = ({ navigation, route }) => {
   const [recorderUri, setRecorderUri] = useState<string | null>("");
   const [showAudioSubmitDrawer, setShowAudioSubmitDrawer] = useState(false);
   const [showSubmitSuccessDrawer, setShowSubmitSuccessDrawer] = useState(false);
@@ -41,7 +44,7 @@ export const TestScreen: FC<TestScreenProps> = ({ navigation }) => {
   };
 
   const handleCameraCancel = () => {
-    navigation.navigate("Home");
+    navigation.navigate("Tutorial", { word: route.params.word });
   };
 
   return (

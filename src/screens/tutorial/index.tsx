@@ -54,7 +54,7 @@ const TutorialScreen = ({navigation, route}: {
 	}
 
 	const onCancel = () => {
-		navigation.navigate("Word", { word: route.params.word });
+		navigation.navigate("WordDetails", { word: route.params.word });
 	}
 	
 	const onNext = () => {
