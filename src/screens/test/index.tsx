@@ -1,14 +1,14 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { FC, useState } from "react";
-import { SafeAreaView, View, StyleSheet } from "react-native";
+import { SafeAreaView, View, StyleSheet, StatusBar } from "react-native";
 import { TabRouter } from "react-navigation";
 import { RootStackParamList } from "../../../App";
 import AudioRecorder from "../../components/AudioRecorder";
 import BottomDrawer from "../../components/BottomDrawer";
 import CameraWrapper from "../../components/CameraWrapper";
 import VideoPlayer from "../../components/VideoPlayer";
-import { droidSafeArea } from "../../styles";
+import { Colors, droidSafeArea } from "../../styles";
 
 interface TestScreenProps {
   navigation: StackNavigationProp<RootStackParamList, "Test">;
@@ -49,6 +49,7 @@ export const TestScreen: FC<TestScreenProps> = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={droidSafeArea}>
+      <StatusBar backgroundColor={Colors.WHITE} barStyle={"dark-content"} />
       <View style={styles.cameraView}>
         <CameraWrapper onCancel={handleCameraCancel} />
       </View>

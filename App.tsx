@@ -6,6 +6,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TestScreen } from "./src/screens/test";
 import { MainTabs } from "./src/screens/MainScreens";
 import TutorialScreen from "./src/screens/tutorial";
+import WordDetailsScreen from "./src/screens/word-details";
 
 const Stack = createStackNavigator();
 
@@ -34,12 +35,10 @@ const SayItApp = () => {
             cardStyle: { backgroundColor: "white" }
           }}
         >
-          <Stack.Screen name="Main" component={MainTabs}></Stack.Screen>
-          <Stack.Screen
-            name="Tutorial"
-            component={TutorialScreen}
-          ></Stack.Screen>
-          <Stack.Screen name="Test" component={TestScreen}></Stack.Screen>
+          <Stack.Screen name="Main" component={MainTabs} />
+          <Stack.Screen name="WordDetails" component={WordDetailsScreen} />
+          <Stack.Screen name="Tutorial" component={TutorialScreen} />
+          <Stack.Screen name="Test" component={TestScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

@@ -3,24 +3,25 @@ import React, {
   MutableRefObject,
   useEffect,
   useRef,
-  useState,
+  useState
 } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   FlatList,
   Keyboard,
+  StatusBar,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../../App";
 import { styles } from "../../styles/app";
-import { droidSafeArea } from "../../styles";
+import { Colors, droidSafeArea } from "../../styles";
 
 export const SearchScreen = ({
-  navigation,
+  navigation
 }: {
   navigation: StackNavigationProp<RootStackParamList, "Search">;
 }) => {
@@ -32,7 +33,7 @@ export const SearchScreen = ({
   useEffect(() => {
     if (query) {
       setSuggestions(
-        wordList.filter((word) =>
+        wordList.filter(word =>
           word.toLowerCase().includes(query.toLowerCase())
         )
       );
@@ -57,7 +58,7 @@ export const SearchScreen = ({
           paddingHorizontal: 25,
           borderBottomColor: "#ddd",
           borderBottomWidth: 1,
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
         <Text>{item}</Text>
@@ -67,6 +68,7 @@ export const SearchScreen = ({
 
   return (
     <SafeAreaView style={[styles.container, droidSafeArea]}>
+      <StatusBar backgroundColor={Colors.WHITE} barStyle={"dark-content"} />
       <View style={{ marginBottom: 20 }}>
         <Text style={styles.title}>Search</Text>
       </View>
@@ -82,13 +84,13 @@ export const SearchScreen = ({
             width: "100%",
             borderRadius: 25,
             marginBottom: 20,
-            zIndex: 10,
+            zIndex: 10
           }}
           onChangeText={setQuery}
         ></TextInput>
         <FlatList
           style={{
-            width: "100%",
+            width: "100%"
           }}
           contentContainerStyle={{ overflow: "hidden" }}
           data={suggestions}
