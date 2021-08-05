@@ -1,6 +1,7 @@
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { FC } from "react";
-import { SafeAreaView, Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { RootStackParamList } from "../../../App";
 import Line from "../../components/Line";
 import PageHeader from "../../components/PageHeader";

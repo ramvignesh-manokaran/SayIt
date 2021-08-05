@@ -11,6 +11,7 @@ import WordDetailsScreen from "../screens/WordDetails";
 import { Colors } from "../styles";
 import TopicScreen from "../screens/Topic";
 import ProfileScreen from "../screens/Profile";
+import CategoriesScreen from "../screens/Categories";
 
 const Tab = createBottomTabNavigator();
 export const AppTabs = () => {
@@ -38,7 +39,7 @@ export const AppTabs = () => {
       ></Tab.Screen>
       <Tab.Screen
         name="Category"
-        component={TopicScreen} // @todo : to replace with category screen
+        component={CategoriesScreen} // @todo : to replace with category screen
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
@@ -75,6 +76,11 @@ export const AppTabs = () => {
       <Tab.Screen
         name="WordDetails"
         component={WordDetailsScreen}
+        options={{ tabBarButton: () => null }}
+      ></Tab.Screen>
+      <Tab.Screen
+        name="Topic"
+        component={TopicScreen}
         options={{ tabBarButton: () => null }}
       ></Tab.Screen>
     </Tab.Navigator>

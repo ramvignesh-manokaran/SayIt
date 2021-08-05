@@ -1,7 +1,8 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { FC } from "react";
-import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { RootStackParamList } from "../../../App";
 import LibraryDetails from "../../components/LibraryDetails";
 import PageHeader from "../../components/PageHeader";
