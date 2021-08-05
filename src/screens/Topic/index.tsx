@@ -22,7 +22,7 @@ const TopicScreen: FC<TopicScreenProps> = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={[droidSafeArea, styles.container]}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.headerView}>
         <PageHeader text={"Conversation"} />
         <View style={styles.description}>
