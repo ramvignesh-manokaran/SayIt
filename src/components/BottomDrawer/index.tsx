@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { BottomSheet } from "react-native-btr";
 import { Typography, Colors } from "../../styles";
-import Button, { ButtonProps, ButtonType } from "../Button";
+import Button, { ButtonProps, ButtonSize, ButtonType } from "../Button";
 
 interface BottomDrawerProps {
   showDrawer: boolean;
@@ -34,11 +34,13 @@ const BottomDrawer: FC<BottomDrawerProps> = ({
           <Button
             text={primaryButton.text}
             type={ButtonType.PRIMARY}
+            size={ButtonSize.LARGE}
             onPress={primaryButton.onPress}
           />
           {secondaryButton && (
             <Button
               text={secondaryButton.text}
+              size={ButtonSize.LARGE}
               type={ButtonType.SECONDARY}
               onPress={secondaryButton.onPress}
             />

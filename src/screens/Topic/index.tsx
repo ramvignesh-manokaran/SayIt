@@ -14,7 +14,7 @@ interface TopicScreenProps {
 }
 
 const TopicScreen: FC<TopicScreenProps> = ({ navigation }) => {
-  useStatusBar("light-content");
+  useStatusBar("light-content", Colors.AQUA);
 
   const handleWordsClick = (word: string) => {
     navigation.navigate("WordDetails", { word });
@@ -22,10 +22,12 @@ const TopicScreen: FC<TopicScreenProps> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={[droidSafeArea, styles.container]}>
-      <PageHeader text={"Conversation"} />
-      <View style={styles.description}>
-        <Text>You have learnt 5 out of 18 words</Text>
-        <Line style={styles.line} />
+      <View style={styles.headerView}>
+        <PageHeader text={"Conversation"} />
+        <View style={styles.description}>
+          <Text>You have learnt 5 out of 13 words</Text>
+          <Line style={styles.line} />
+        </View>
       </View>
       <View style={styles.conversation}>
         {wordSyllables.map((item: Conversation, index: number) => (
@@ -48,7 +50,9 @@ export default TopicScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
+  },
+  headerView: {
     backgroundColor: Colors.AQUA
   },
   description: {

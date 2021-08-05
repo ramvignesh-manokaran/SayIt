@@ -7,6 +7,7 @@ interface WordSyllableProps {
   word: string;
   syllable: string;
   showTick?: boolean;
+  showExpand?: boolean;
   onPress: (word: string) => void;
 }
 
@@ -14,7 +15,8 @@ const WordSyllable: FC<WordSyllableProps> = ({
   word,
   syllable,
   onPress,
-  showTick
+  showTick,
+  showExpand
 }) => {
   return (
     <View>
@@ -37,6 +39,11 @@ const WordSyllable: FC<WordSyllableProps> = ({
               size={24}
               name="circle-outline"
             />
+          </View>
+        )}
+        {showExpand && (
+          <View style={styles.tickView}>
+            <MaterialCommunityIcons size={24} name="greater-than" />
           </View>
         )}
       </TouchableOpacity>

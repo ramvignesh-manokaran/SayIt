@@ -18,14 +18,14 @@ const WordDetailsScreen: FC<WordDetailsScreenProps> = ({
   navigation,
   route
 }) => {
-  useStatusBar("light-content");
+  useStatusBar("light-content", Colors.GREEN);
 
   const handleLinkClick = () => {
     navigation.navigate("Tutorial", { word: route.params.word });
   };
 
   return (
-    <SafeAreaView style={[droidSafeArea, styles.container]}>
+    <SafeAreaView style={[droidSafeArea]}>
       <ScrollView>
         <View style={styles.textAndSignView}>
           <View style={styles.textView}>
@@ -72,10 +72,6 @@ const WordDetailsScreen: FC<WordDetailsScreenProps> = ({
 export default WordDetailsScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 30,
-    backgroundColor: Colors.GREEN
-  },
   textAndSignView: {
     padding: 15,
     backgroundColor: Colors.GREEN,
@@ -99,9 +95,9 @@ const styles = StyleSheet.create({
   },
   videoLinkView: {
     padding: 15,
-    backgroundColor: Colors.GREEN,
     height: 230,
-    width: "100%"
+    width: "100%",
+    backgroundColor: Colors.GREEN
   },
   videoLinkTouchable: {
     flex: 1

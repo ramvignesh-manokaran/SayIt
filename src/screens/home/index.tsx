@@ -61,7 +61,7 @@ export const HomeScreen = ({
       <View style={styles.container}>
         <View style={{ marginBottom: 20 }}>
           <Text style={styles.title}>
-            Hello <Text style={{ color: Colors.GREEN }}>Victoria!</Text>
+            Hello <Text style={{ color: Colors.GREEN }}>John</Text>
           </Text>
         </View>
         <TouchableWithoutFeedback

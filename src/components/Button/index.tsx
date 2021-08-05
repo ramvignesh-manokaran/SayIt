@@ -14,21 +14,34 @@ export enum ButtonType {
   SECONDARY = "secondary"
 }
 
+export enum ButtonSize {
+  SMALL = "small",
+  LARGE = "large"
+}
+
 export interface ButtonProps {
   text: string;
   type: ButtonType;
+  size: ButtonSize;
   onPress?: () => void;
   buttonStyle?: StyleProp<ViewStyle>;
 }
 
-const Button: FC<ButtonProps> = ({ text, type, onPress, buttonStyle }) => {
+const Button: FC<ButtonProps> = ({
+  text,
+  type,
+  onPress,
+  buttonStyle,
+  size
+}) => {
   return (
     <View style={buttonStyle ? buttonStyle : styles.container}>
       <TouchableHighlight onPress={onPress ? onPress : () => {}}>
         <View
           style={[
             styles.root,
-            type === ButtonType.PRIMARY ? styles.primary : styles.secondary
+            type === ButtonType.PRIMARY ? styles.primary : styles.secondary,
+            size === ButtonSize.SMALL ? styles.small : styles.large
           ]}
         >
           <Text
@@ -65,6 +78,13 @@ const styles = StyleSheet.create({
   },
   secondary: {
     backgroundColor: Colors.WHITE
+  },
+  small: {
+    height: 40,
+    width: 75
+  },
+  large: {
+    height: 50
   },
   primaryText: {
     color: Colors.WHITE

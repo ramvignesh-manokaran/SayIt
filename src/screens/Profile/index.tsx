@@ -1,27 +1,40 @@
 import React, { FC } from "react";
 import { SafeAreaView, Text, StyleSheet, View, Image } from "react-native";
+import Line from "../../components/Line";
+import WordSyllable from "../../components/WordSyllable";
+import {
+  wordSyllables,
+  Conversation,
+  AccountDetail,
+  accountDetails
+} from "../../constants/data";
 import { Colors, droidSafeArea, Typography } from "../../styles";
 import { useStatusBar } from "../../utils/Hooks";
 
 const ProfileScreen: FC = () => {
-  useStatusBar("light-content");
+  useStatusBar("dark-content");
 
   return (
     <SafeAreaView style={[droidSafeArea, styles.container]}>
-      <View style={styles.Header}>
-        <Text style={styles.normal}>Settings</Text>
-        <Text style={styles.header}>Profile</Text>
-        <Text style={styles.normal}>Logout</Text>
-      </View>
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
           source={require("../../assets/images/profile.png")}
         />
+        <Text style={styles.name}>John Chai</Text>
       </View>
       <View style={styles.details}>
-        <Text style={styles.name}>Victoria Robertson</Text>
-        <Text style={styles.description}>A mantra goes here</Text>
+        {accountDetails.map((item: AccountDetail, index: number) => (
+          <View key={index}>
+            <WordSyllable
+              word={item.setting}
+              syllable={""}
+              onPress={() => {}}
+              showExpand
+            />
+            <Line />
+          </View>
+        ))}
       </View>
     </SafeAreaView>
   );
@@ -32,46 +45,21 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.GREEN
-  },
-  Header: {
-    padding: 15,
-    paddingTop: 25,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    height: 220
-  },
-  normal: {
-    ...Typography.normal,
-    color: Colors.WHITE
-  },
-  header: {
-    ...Typography.header,
-    color: Colors.WHITE,
-    fontWeight: "bold"
+    paddingTop: 50
   },
   imageContainer: {
-    height: 200,
-    width: 200,
-    borderRadius: 100,
-    position: "absolute",
-    top: 120,
-    left: "50%",
-    elevation: 10
+    justifyContent: "center",
+    alignItems: "center"
   },
   image: {
     width: 200,
     height: 200,
-    borderRadius: 100,
-    left: "-50%",
-    position: "absolute"
+    borderRadius: 100
   },
   details: {
     flex: 1,
-    backgroundColor: Colors.WHITE,
-    paddingTop: 80,
-    alignItems: "center"
+    padding: 15,
+    paddingTop: 30
   },
   name: {
     ...Typography.header,

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { ImageSourcePropType, StyleSheet, View, Text } from "react-native";
 import { Typography, Colors } from "../../styles";
-import Button, { ButtonType } from "../Button";
+import Button, { ButtonSize, ButtonType } from "../Button";
 import ImageLink from "../ImageLink";
 import Line from "../Line";
 import List from "../List";
@@ -44,6 +44,7 @@ const ImageTextCombo: FC<ImageTextComboProps> = ({
             key={index}
             text={button.text}
             type={ButtonType.PRIMARY}
+            size={ButtonSize.SMALL}
             onPress={button.onPress}
             buttonStyle={styles.buttonStyle}
           />
@@ -59,7 +60,10 @@ export default ImageTextCombo;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
+    paddingRight: 15,
+    paddingLeft: 15,
+    paddingTop: 30,
+    paddingBottom: 0,
     backgroundColor: Colors.WHITE
   },
   imageTouchableStyles: {
@@ -87,7 +91,6 @@ const styles = StyleSheet.create({
     paddingRight: 50
   },
   buttonStyle: {
-    width: 100,
     marginRight: 10
   }
 });

@@ -58,7 +58,7 @@ export const wordSyllables: Conversation[] = [
   {
     word: "Yes",
     syllable: "yes /jɛs/",
-    learnt: true
+    learnt: false
   },
   {
     word: "No",
@@ -97,4 +97,26 @@ export const syllableAppData: string[] = ["2 letter Ps but just one P sound"];
 export const syllableLeData: string[] = [
   "The second syllable is unstressed",
   "Only a dark L can be heard"
+];
+
+export interface AccountDetail {
+  setting: string;
+}
+
+export const accountDetails: AccountDetail[] = [
+  {
+    setting: "Account settings"
+  },
+  {
+    setting: "Notifications"
+  },
+  {
+    setting: "History"
+  },
+  {
+    setting: "About SayIt"
+  },
+  {
+    setting: "Sign Out"
+  }
 ];
