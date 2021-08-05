@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  StyleSheet
+  StyleSheet,
 } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../../App";
@@ -15,13 +15,14 @@ import { wordList, WordType } from "../../assets/words/wordList";
 import { useStatusBar } from "../../utils/Hooks";
 
 export const SearchScreen = ({
-  navigation
+  navigation,
 }: {
   navigation: StackNavigationProp<RootStackParamList, "Search">;
 }) => {
   const [query, setQuery] = useState<string>("");
   const [suggestions, setSuggestions] = useState<WordType[]>([]);
   let textInputRef = createRef<TextInput>();
+  useStatusBar("dark-content");
 
   useEffect(() => {
     if (query) {
@@ -42,7 +43,6 @@ export const SearchScreen = ({
   });
 
   const renderSuggestion = ({ item }: { item: WordType }) => {
-    useStatusBar("dark-content");
     return (
       <TouchableOpacity
         onPress={() => navigation.navigate("WordDetails", { word: item.name })}
@@ -53,7 +53,7 @@ export const SearchScreen = ({
           borderBottomColor: "#ddd",
           borderBottomWidth: 1,
           flexDirection: "row",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         <Text
@@ -86,13 +86,13 @@ export const SearchScreen = ({
             width: "100%",
             borderRadius: 25,
             marginBottom: 20,
-            zIndex: 10
+            zIndex: 10,
           }}
           onChangeText={setQuery}
         ></TextInput>
         <FlatList
           style={{
-            width: "100%"
+            width: "100%",
           }}
           contentContainerStyle={{ overflow: "hidden" }}
           data={suggestions}
@@ -111,10 +111,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     justifyContent: "flex-start",
     paddingLeft: 24,
-    paddingRight: 24
+    paddingRight: 24,
   },
   title: {
     fontSize: 36,
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
 });
