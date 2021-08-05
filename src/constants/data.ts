@@ -1,3 +1,4 @@
+import { ImageSourcePropType } from "react-native";
 import { LibraryDetail } from "../components/LibraryDetails";
 
 export const libraryDetails: LibraryDetail[] = [
@@ -118,5 +119,59 @@ export const accountDetails: AccountDetail[] = [
   },
   {
     setting: "Sign Out"
+  }
+];
+export type CategoryContent = {
+  title: string;
+  subtitle?: string;
+  content: string[] | ImageSourcePropType;
+};
+
+export const voiceAndConsonantCategories: CategoryContent[][] = [
+  [
+    {
+      title: "Short Vowels",
+      content: ["/ɪ/", "/ʊ/"]
+    },
+    {
+      title: "Long Vowels",
+      content: ["/i:/", "/u:/"]
+    },
+    {
+      title: "Double Vowels",
+      content: ["/eɪ/", "/aɪ/"]
+    }
+  ],
+  [
+    {
+      title: "Voiceless Consonants",
+      content: ["/p/", "/t/"]
+    },
+    {
+      title: "Voiced Consonants",
+      content: ["/b/", "/d/"]
+    },
+    {
+      title: "Other consonants",
+      content: ["/r/", "/j/"]
+    }
+  ]
+];
+
+export const topicCategories: CategoryContent[] = [
+  {
+    title: "Conversation",
+    subtitle: "5/18 words",
+    content: require("../assets/images/conversation.png")
+  },
+  {
+    title: "People",
+    subtitle: "6/21 words",
+    content: require("../assets/images/people.png")
+  },
+  {
+    title: "Feelings",
+    subtitle: "3/18 words",
+    content: require("../assets/images/feelings.png")
   }
 ];
